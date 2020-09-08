@@ -2,8 +2,6 @@
 using namespace std;
 
 
-
-
 int main(){
 	int n, k, contestant[101], count_adv=0;
 	cin >> n >> k;
@@ -19,14 +17,8 @@ int main(){
 		}
 	}
 	cout<<count_adv;
+	return 0;
 }
-
-
-
-
-
-
-
 
 
 
