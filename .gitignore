@@ -34,6 +34,8 @@
 *
 
 !*.cpp
+!*.c
+!*.py
 !.gitignore
 !README.md
 
