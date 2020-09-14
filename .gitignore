@@ -31,3 +31,9 @@
 *.out
 *.app
 
+*
+
+!*.cpp
+!.gitignore
+!README.md
+
