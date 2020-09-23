@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define gc getchar_unlocked
-#define fo(i,n) for(i=1;i<=n;i++)
+#define fo(i,n) for(i=0;i<n;i++)
 #define Fo(i,k,n) for(i=k;k<n?i<n:i>n;k<n?i+=1:i-=1)
 #define ll long long
 #define si(x)	scanf("%d",&x)
@@ -14,41 +14,29 @@ using namespace std;
 #define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
 
 void solve() {
-  int i, j, moves=0, n=5, arr[6][6], move_x=0, move_y=0;
-  fo(i,n){
-	  fo(j,n){
-		  cin>>(arr[i][j]);
-	  }
+  int i, numbersInt[60], max;
+  char input[100];
+  ss(input);
+  char *numbersChar = strtok(input, "+");	
+  numbersInt[0] = (int)*numbersChar;
+  
+  i=1;
+  while(numbersChar!=NULL){
+	numbersInt[i] = (int)*numbersChar;
+	numbersChar = strtok(NULL, "+");
+	deb(numbersChar[#i]);
+	i++;
   }
   
   
-  fo(i,n){
-	  fo(j,n){
-		  if (arr[i][j] == 1){
-			  if (i<3){
-				  move_x += 3 - i;
-			  }
-			  else if(i>3){
-				  move_x += i - 3;
-			  }
-			  else{
-				  move_x += 0;
-			  }
-			  if(j<3){
-				  move_y += 3 - j;
-			  }
-			  else if(j>3){
-				  move_y += j - 3;
-			  }
-			  else{
-				  move_y += 0;
-			  }
-			  moves+=move_x+move_y;
-			  break;
-		  }
-	  }
+  
+  max = numbersInt[0];
+  int arrSize = sizeof(numbersInt)/ sizeof(numbersInt[0]);
+  
+  
+  Fo(i,1,arrSize){
+	deb(numbersInt[i]);
   }
-  cout<<moves;
   
 }
 
@@ -57,10 +45,10 @@ int main() {
     // srand(chrono::high_resolution_clock::now().time_since_epoch().count());
 
     int t = 1;
-   
+    // cin >> t;
     while(t--) {
       solve();
-       }
+    }
 
     return 0;
 }

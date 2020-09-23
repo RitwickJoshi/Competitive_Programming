@@ -1,5 +1,8 @@
 #include<stdio.h>
 #include<string.h>
+
+#define rep(i,a,b) for (int i=a; i<=b; i++) // a is initial
+											// b is the condition
 int main(){
   int i,t,s=0;
   char x[4];
