@@ -13,20 +13,30 @@ using namespace std;
 #define deb(x) cout << #x << "=" << x << endl
 #define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
 
+
+ // 3$ has to pay for each banana he buys
+ // have 17$
+ // need 4 bananas
+ // 3*1 + 3*2 + 3*3 + 3*4 => 3+6+9+12 => 30 - he has
+
+
+
 void solve() {
-  int numberofchar = 0, i, moves = 0;
-  cin >> numberofchar;
-  char inputchar[numberofchar+1];
-  cin >> inputchar;
-  fo(i, numberofchar){
-	  if (inputchar[i] == inputchar[i+1]){
-		  moves+=1;
-	  }
-	  else {
-		  continue;
-	  }
+  int i, wBananas, kDollarEach, nDollarHas, FinalAmt = 0;
+  cin >> kDollarEach >> nDollarHas >>  wBananas;
+  Fo(i, 1, wBananas+1){
+	  FinalAmt += kDollarEach*i;
+	  // deb2(i, FinalAmt);
   }
-  cout << moves;
+  
+  int Borrow = FinalAmt-nDollarHas;
+  if (Borrow <= 0){
+	cout<<0;  
+	}
+	else{
+		cout<<Borrow;
+	}
+  
 }
 
 int main() {

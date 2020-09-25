@@ -13,20 +13,21 @@ using namespace std;
 #define deb(x) cout << #x << "=" << x << endl
 #define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
 
+
 void solve() {
-  int numberofchar = 0, i, moves = 0;
-  cin >> numberofchar;
-  char inputchar[numberofchar+1];
-  cin >> inputchar;
-  fo(i, numberofchar){
-	  if (inputchar[i] == inputchar[i+1]){
-		  moves+=1;
-	  }
-	  else {
-		  continue;
-	  }
-  }
-  cout << moves;
+	int i;
+	string str;
+    cin>>str;
+	unordered_map<char, int>input ;
+	fo(i,str.length()){
+		input[str[i]]++; // str[i] -> count str[i] => w->1, j->1, m->2, 
+    }
+    if (input.size()%2 == 0){
+		cout<<"CHAT WITH HER!";
+	} 
+	else {
+		cout<<"IGNORE HIM!";
+	}
 }
 
 int main() {
