@@ -31,7 +31,29 @@ typedef vector<vi>		vvi;
 typedef vector<vl>		vvl;
 
 void solve() {
-  int i, j, m, n;
+  int i, k, n, j;
+  cin>> k >> n;
+  set<pii> x;
+  vi input_number;
+  fo(i, k){
+	  int number;
+	  cin>>number;
+	  input_number.pb(number);
+  }
+  int min_sum = 1e5;
+  
+  // set<pi> number_set;
+  
+  fo(i, input_number.size()){
+	  fo(j,input_number.size()){
+		x.insert(mp(input_number[i], input_number[j]));
+		}
+	}
+	int pos1,pos2;
+  for(auto const &z: x){
+	  cout << z.F+z.S;
+  }
+  
   
 }
 
