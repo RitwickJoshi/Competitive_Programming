@@ -28,6 +28,7 @@ typedef vector<pii>		vpii;
 typedef vector<pl>		vpl;
 typedef vector<vi>		vvi;
 typedef vector<vl>		vvl;
+
 /******************************** FOR DEBUG PROCESS *******************************************/
 #define deb(x) cout << #x << " = " << x << endl
 #define deb2(x, y) cout << #x << " = " << x << " , " << #y << " = " << y << endl
@@ -35,8 +36,8 @@ template<typename T, size_t n>
 void pa(T const(& arr)[n]){
 	fast;
 	for(size_t i=0; i<n; i++)
-	cout << arr[i] << " ";
-} 
+	cout << "[" << i << "]" << ": " << arr[i] << " \n";
+}
 void __print(int x) {cerr << x;}
 void __print(long x) {cerr << x;}
 void __print(long long x) {cerr << x;}
@@ -63,68 +64,39 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #else
 #define debug(x...)
 #endif
-/******************************** ABOVE FOR DEBUG PROCESS **************************************/ 
- 
- 
+/******************************** ABOVE FOR DEBUG PROCESS **************************************/
 
-mt19937_64 rang(chrono::high_resolution_clock::now().time_since_epoch().count());
-int rng(int lim) {
-	uniform_int_distribution<int> uid(0,lim-1);
-	return uid(rang);
+ll min(ll n1,ll n2,ll n3,ll n4,ll n5){
+	vl mini;
+	mini.pb(n1); mini.pb(n2); mini.pb(n3); mini.pb(n4); mini.pb(n5);
+	return *min_element(all(mini));
 }
-int mpow(int base, int exp); 
-void ipgraph(int n, int m);
-void dfs(int u, int par);
 
-const int mod = 1'000'000'007;
-const int N = 3e5, M = N;
-//=======================
+ll dp( ll last){
+	ll jump[last+1];
+	ll i;
+	jump[0] = 0; jump[1] = 1; jump[2] = 1; jump[3] = 1; jump[4] = 1;
+	for(i=5; i<=last; i++){
+		jump[i] = 1+min(jump[i-1], jump[i-2], jump[i-3], jump[i-4], jump[i-5]);
+	}
+	return jump[last];
+}
 
-vi g[N];
-int a[N];
-
-void solve() {
-	int i, j, n, m;
+void test_cases() {
 	fast;
+	ll last;
+	cin >> last;
+	cout<<dp(last);
+	
 }
 
 int main() {
     fast;
-    srand(chrono::high_resolution_clock::now().time_since_epoch().count());
 
     int t = 1;
     cin >> t;
     while(t--) {
-      solve();
+      test_cases();
     }
-
     return 0;
-}
-
-int mpow(int base, int exp) {
-  base %= mod;
-  int result = 1;
-  while (exp > 0) {
-    if (exp & 1) result = ((ll)result * base) % mod;
-    base = ((ll)base * base) % mod;
-    exp >>= 1;
-  }
-  return result;
-}
-
-void ipgraph(int n, int m){
-	int i, u, v;
-	while(m--){
-		cin>>u>>v;
-    u--, v--;
-		g[u].pb(v);
-		g[v].pb(u);
-	}
-}
-
-void dfs(int u, int par){
-	for(int v:g[u]){
-		if (v == par) continue;
-		dfs(v, u);
-	}
 }

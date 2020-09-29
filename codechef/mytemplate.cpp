@@ -30,6 +30,24 @@ typedef vector<pl>		vpl;
 typedef vector<vi>		vvi;
 typedef vector<vl>		vvl;
 
+void fastscan(int &number) 
+{ 
+	bool negative = false; 
+	register int c; 
+	number = 0; 
+	c = getchar(); 
+	if (c=='-') 
+	{ 
+		negative = true; 
+		c = getchar(); 
+	} 
+	for (; (c>47 && c<58); c=getchar()) 
+		number = number *10 + c - 48; 
+	if (negative) 
+		number *= -1; 
+} 
+
+
 void solve() {
   int i, j, m, n;
   
@@ -40,7 +58,7 @@ int main() {
     // srand(chrono::high_resolution_clock::now().time_since_epoch().count());
 
     int t = 1;
-    cin >> t;
+    fastscan(t);
     while(t--) {
       solve();
     }

@@ -28,6 +28,7 @@ typedef vector<pii>		vpii;
 typedef vector<pl>		vpl;
 typedef vector<vi>		vvi;
 typedef vector<vl>		vvl;
+
 /******************************** FOR DEBUG PROCESS *******************************************/
 #define deb(x) cout << #x << " = " << x << endl
 #define deb2(x, y) cout << #x << " = " << x << " , " << #y << " = " << y << endl
@@ -35,8 +36,8 @@ template<typename T, size_t n>
 void pa(T const(& arr)[n]){
 	fast;
 	for(size_t i=0; i<n; i++)
-	cout << arr[i] << " ";
-} 
+	cout << "[" << i << "]" << ": " << arr[i] << " \n";
+}
 void __print(int x) {cerr << x;}
 void __print(long x) {cerr << x;}
 void __print(long long x) {cerr << x;}
@@ -63,68 +64,52 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #else
 #define debug(x...)
 #endif
-/******************************** ABOVE FOR DEBUG PROCESS **************************************/ 
- 
- 
+/******************************** ABOVE FOR DEBUG PROCESS **************************************/
 
-mt19937_64 rang(chrono::high_resolution_clock::now().time_since_epoch().count());
-int rng(int lim) {
-	uniform_int_distribution<int> uid(0,lim-1);
-	return uid(rang);
-}
-int mpow(int base, int exp); 
-void ipgraph(int n, int m);
-void dfs(int u, int par);
-
-const int mod = 1'000'000'007;
-const int N = 3e5, M = N;
-//=======================
-
-vi g[N];
-int a[N];
-
-void solve() {
-	int i, j, n, m;
+void test_cases() {
 	fast;
+	int i, _i=0;
+	string str;
+	int length, second;
+	cin >> length >> second;
+	cin >> str;
+	while(_i!=second){
+		i=0;
+		while(i < length){
+			
+			if((str[i] == 'B') && (str[i+1] == 'G')){
+				// debug(str); // original
+				char c = str[i];
+				str[i] = str[i+1];
+				str[i+1] = c;
+				
+				// debug(str, i, _i); // 
+				i=i+2;
+				// debug(i); // 
+				if(i == length+1){
+					break;
+				}
+			}
+			else {
+				i++;
+			}
+			// debug(_i, i);
+		}
+		
+		_i++;
+		
+	}
+	// debug(str, _i);
+	cout<<str;
 }
 
 int main() {
     fast;
-    srand(chrono::high_resolution_clock::now().time_since_epoch().count());
 
     int t = 1;
     cin >> t;
     while(t--) {
-      solve();
+      test_cases();
     }
-
     return 0;
-}
-
-int mpow(int base, int exp) {
-  base %= mod;
-  int result = 1;
-  while (exp > 0) {
-    if (exp & 1) result = ((ll)result * base) % mod;
-    base = ((ll)base * base) % mod;
-    exp >>= 1;
-  }
-  return result;
-}
-
-void ipgraph(int n, int m){
-	int i, u, v;
-	while(m--){
-		cin>>u>>v;
-    u--, v--;
-		g[u].pb(v);
-		g[v].pb(u);
-	}
-}
-
-void dfs(int u, int par){
-	for(int v:g[u]){
-		if (v == par) continue;
-		dfs(v, u);
-	}
 }

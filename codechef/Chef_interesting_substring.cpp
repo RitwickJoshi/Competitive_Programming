@@ -30,30 +30,26 @@ typedef vector<pl>		vpl;
 typedef vector<vi>		vvi;
 typedef vector<vl>		vvl;
 
+void fastscan(int &number) 
+{ 
+	bool negative = false; 
+	register int c; 
+	number = 0; 
+	c = getchar(); 
+	if (c=='-') 
+	{ 
+		negative = true; 
+		c = getchar(); 
+	} 
+	for (; (c>47 && c<58); c=getchar()) 
+		number = number *10 + c - 48; 
+	if (negative) 
+		number *= -1; 
+} 
+
+
 void solve() {
-  int i, k, n, j;
-  cin>> k >> n;
-  set<pii> x;
-  vi input_number;
-  fo(i, k){
-	  int number;
-	  cin>>number;
-	  input_number.pb(number);
-  }
-  int min_sum = 1e5;
-  
-  // set<pi> number_set;
-  
-  fo(i, input_number.size()){
-	  fo(j,input_number.size()){
-		x.insert(mp(input_number[i], input_number[j]));
-		}
-	}
-	int pos1,pos2;
-  for(auto const &z: x){
-	  cout << z.F+z.S;
-  }
-  
+  int i, j, m, n;
   
 }
 
@@ -62,7 +58,7 @@ int main() {
     // srand(chrono::high_resolution_clock::now().time_since_epoch().count());
 
     int t = 1;
-    cin >> t;
+    fastscan(t);
     while(t--) {
       solve();
     }
